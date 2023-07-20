@@ -22,7 +22,7 @@ public class Product {
     private Long id;
     private String name;
     private long price;
-    private DiscountPoliy discountPoliy;
+    private DiscountPolicy discountPolicy;
 
     public Long getId() {
         return id;
@@ -36,17 +36,17 @@ public class Product {
         return price;
     }
 
-    public DiscountPoliy getDiscountPoliy() {
-        return discountPoliy;
+    public DiscountPolicy getDiscountPolicy() {
+        return discountPolicy;
     }
 
-    public Product(String name, long price, DiscountPoliy discountPoliy) {
+    public Product(String name, long price, DiscountPolicy discountPolicy) {
         this.name = name;
         this.price = price;
-        this.discountPoliy = discountPoliy;
+        this.discountPolicy = discountPolicy;
     }
 
-    public void assignId(final Long id) {
+    public void assignId( Long id) {
         this.id = id;
     }
 }

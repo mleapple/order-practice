@@ -1,6 +1,6 @@
 package com.ex.ord.service.dto;
 
-import com.ex.ord.entity.DiscountPoliy;
+import com.ex.ord.entity.DiscountPolicy;
 
 /**
  * fileName:RequestProduct
@@ -10,13 +10,13 @@ import com.ex.ord.entity.DiscountPoliy;
 public class RequestProduct {
     private final String name;
     private final long price;
-    private final DiscountPoliy discountPoliy;
+    private final DiscountPolicy discountPolicy;
 
-    public RequestProduct(String name, long price, DiscountPoliy discountPoliy) {
+    public RequestProduct(String name, long price, DiscountPolicy discountPolicy) {
         System.out.println(" 상품 생성요청= "  );
         this.name           = name;
         this.price          = price;
-        this.discountPoliy  = discountPoliy;
+        this.discountPolicy = discountPolicy;
     }
 
     public String getName() {
@@ -27,7 +27,7 @@ public class RequestProduct {
         return price;
     }
 
-    public DiscountPoliy getDiscountPoliy() {
-        return discountPoliy;
+    public DiscountPolicy getDiscountPoliy() {
+        return discountPolicy;
     }
 }
