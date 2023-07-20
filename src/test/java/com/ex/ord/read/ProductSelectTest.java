@@ -56,11 +56,14 @@ class ProductSelectTest extends ApiTest {
         // 조회
         Long productId =1L;
 
-        final Product product =  productService.getProudct(productId);
+        final ExtractableResponse<Response> response = RestAssured.given().log().all()
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .when().get("/products/{productId}",productId)
+                .then().log().all().extract();
 
-     ;
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+        assertThat(response.jsonPath().getString("name")).isEqualTo("노트북");
+
     }
 
-   /* private class GetProductResponse {
-    }*/
 }
