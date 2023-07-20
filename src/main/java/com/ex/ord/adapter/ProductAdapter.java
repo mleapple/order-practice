@@ -14,6 +14,11 @@ import org.springframework.stereotype.Component;
 @Component
 @Qualifier("productAdapter")
 public class ProductAdapter implements ProductPort {
+    @Override
+    public Product getProudct(Long productId) {
+        return null;
+    }
+
     private final ProductRepository productRepository;// 메모리로 ? , db
 
     public ProductAdapter(ProductRepository productRepository) {

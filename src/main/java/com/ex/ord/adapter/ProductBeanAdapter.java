@@ -1,5 +1,6 @@
 package com.ex.ord.adapter;
 
+import com.ex.ord.entity.DiscountPolicy;
 import com.ex.ord.entity.Product;
 import com.ex.ord.repository.ProductDbRepository;
 import com.ex.ord.repository.ProductPort;
@@ -23,5 +24,11 @@ public class ProductBeanAdapter implements ProductPort {
     @Override
     public void save(final Product product) {// dto 저장 하기
         productDbRepository.save(product);
+    }
+
+    @Override
+    public Product getProudct(Long productId) {//
+        return    productDbRepository.findById(productId).orElseThrow(()->new IllegalArgumentException());
+
     }
 }

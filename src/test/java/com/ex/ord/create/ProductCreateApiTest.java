@@ -1,4 +1,4 @@
-package com.ex.ord;
+package com.ex.ord.create;
 
 import com.ex.ord.entity.DiscountPolicy;
 import com.ex.ord.service.dto.RequestProduct;
@@ -9,10 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
-import java.awt.*;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
 /**
  * fileName:ProductCrateTest

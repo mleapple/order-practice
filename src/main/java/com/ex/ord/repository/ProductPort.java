@@ -9,4 +9,6 @@ import com.ex.ord.entity.Product;
  **/
 public interface ProductPort {
     void save(final Product product);
+
+    Product getProudct(Long productId);
 }
