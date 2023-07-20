@@ -38,6 +38,7 @@ class ProductCrateTest {
     }
     @Test
     void 상품생성하기(){
+        // 상품 요청 테스트 러프하게
         RequestProduct request = new RequestProduct("노트북",1000,DiscountPoliy.DC10); // 저장 DTL
         productService.creatProduct(request); // 서장하기
     }
