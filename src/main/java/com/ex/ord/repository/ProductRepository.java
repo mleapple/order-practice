@@ -1,6 +1,7 @@
 package com.ex.ord.repository;
 
 import com.ex.ord.entity.Product;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,6 +11,7 @@ import java.util.Map;
  * 작성날짜:2023-07-20
  * desc :
  **/
+@Component
 public class ProductRepository {
     // 메로리에 저장하기
     private Map<Long , Product> persistence= new HashMap<>();

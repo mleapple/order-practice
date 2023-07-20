@@ -1,8 +1,8 @@
 package com.ex.ord.adapter;
 
 import com.ex.ord.entity.Product;
+import com.ex.ord.repository.ProductDbRepository;
 import com.ex.ord.repository.ProductPort;
-import com.ex.ord.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
@@ -12,16 +12,16 @@ import org.springframework.stereotype.Component;
  * desc :
  **/
 @Component
-@Qualifier("productAdapter")
-public class ProductAdapter implements ProductPort {
-    private final ProductRepository productRepository;// 메모리로 ? , db
+@Qualifier("productBeanAdapter")
+public class ProductBeanAdapter implements ProductPort {
+    private final ProductDbRepository productDbRepository;// , db로 저장
 
-    public ProductAdapter(ProductRepository productRepository) {
-        this.productRepository = productRepository;
+    public ProductBeanAdapter(ProductDbRepository productDbRepository) {
+        this.productDbRepository = productDbRepository;
     }
 
     @Override
     public void save(final Product product) {// dto 저장 하기
-        productRepository.save(product);
+        productDbRepository.save(product);
     }
 }

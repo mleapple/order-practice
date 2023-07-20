@@ -40,6 +40,15 @@ class ProductCrateTest {
     void 상품생성하기(){
         // 상품 요청 테스트 러프하게
         RequestProduct request = new RequestProduct("노트북",1000, DiscountPoliy.DC10); // 저장 DTL
-        productService.creatProduct(request); // 저장하기
+        productService.creatProduct(request); // 메모리 저장하기
+        // 상품생성하기_BEAN 으로 만들면서 기존 테스트가 동작 안할수 있다  ??? 이전 것도 동작 해야하는게 아닌가 ?
+
     }
+    @Test
+    void 상품생성하기_BEAN(){
+        // 상품 요청 테스트 러프하게
+        RequestProduct request = new RequestProduct("노트북",1000, DiscountPoliy.DC10); // 저장 DTL
+        productService.creatProduct(request); // 메모리 저장하기
+    }
+
 }
