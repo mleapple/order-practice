@@ -46,7 +46,24 @@ public class Product {
         this.discountPolicy = discountPolicy;
     }
 
+    public void  update(final String name, final long price, final DiscountPolicy discountPolicy) {
+        this.name = name;
+        this.price = price;
+        this.discountPolicy = discountPolicy;
+    }
+
+
     public void assignId( Long id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", discountPolicy=" + discountPolicy +
+                '}';
     }
 }

@@ -11,4 +11,6 @@ public interface ProductPort {
     void save(final Product product);
 
     Product getProudct(Long productId);
+
+    void update(Product proudct);
 }

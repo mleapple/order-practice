@@ -29,4 +29,9 @@ public class ProductAdapter implements ProductPort {
     public void save(final Product product) {// dto 저장 하기
         productRepository.save(product);
     }
+
+    @Override
+    public void update(Product proudct) {
+
+    }
 }

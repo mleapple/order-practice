@@ -3,6 +3,7 @@ package com.ex.ord.service;
 import com.ex.ord.entity.Product;
 import com.ex.ord.repository.ProductPort;
 import com.ex.ord.service.dto.RequestProduct;
+import com.ex.ord.service.dto.UpdateRequest;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -28,5 +29,11 @@ public class ProductService {
 
     public Product getProudct(Long productId) {
         return  productPort.getProudct(productId);
+    }
+
+    public void update(UpdateRequest reuqest) {
+        Product proudct = productPort.getProudct(reuqest.getProductId());
+        proudct.update(reuqest.getName() , reuqest.getPrice() ,reuqest.getDiscountPolicy());
+        productPort.update(proudct);
     }
 }

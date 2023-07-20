@@ -31,4 +31,9 @@ public class ProductBeanAdapter implements ProductPort {
         return    productDbRepository.findById(productId).orElseThrow(()->new IllegalArgumentException());
 
     }
+
+    @Override
+    public void update(Product proudct) {
+        productDbRepository.save(proudct);
+    }
 }
