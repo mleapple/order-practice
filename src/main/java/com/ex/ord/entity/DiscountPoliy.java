@@ -1,4 +1,4 @@
-package com.ex.ord;
+package com.ex.ord.entity;
 
 /**
  * fileName:DiscountPoliy

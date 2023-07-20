@@ -1,4 +1,6 @@
-package com.ex.ord;
+package com.ex.ord.repository;
+
+import com.ex.ord.entity.Product;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,9 +12,9 @@ import java.util.Map;
  **/
 public class ProductRepository {
     // 메로리에 저장하기
-    private Map<Long , ProductCrateTest.Product> persistence= new HashMap<>();
+    private Map<Long , Product> persistence= new HashMap<>();
     private Long seq =0L;
-    public void save(ProductCrateTest.Product product) {
+    public void save(Product product) {
         product.assignId(++seq); // 아이디 증가
         persistence.put(product.getId(),product);
     }

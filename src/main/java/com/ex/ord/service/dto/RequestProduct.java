@@ -1,4 +1,6 @@
-package com.ex.ord;
+package com.ex.ord.service.dto;
+
+import com.ex.ord.entity.DiscountPoliy;
 
 /**
  * fileName:RequestProduct

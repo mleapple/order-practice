@@ -1,4 +1,6 @@
-package com.ex.ord;
+package com.ex.ord.repository;
+
+import com.ex.ord.entity.Product;
 
 /**
  * fileName:productPort
@@ -6,5 +8,5 @@ package com.ex.ord;
  * desc :
  **/
 public interface ProductPort {
-    void save(final  ProductCrateTest.Product product);
+    void save(final Product product);
 }
