@@ -7,6 +7,7 @@ import com.ex.ord.entity.Product;
 import com.ex.ord.service.OrderService;
 import com.ex.ord.service.ProductService;
 import com.ex.ord.service.dto.OrderRequest;
+import io.restassured.RestAssured;
 import io.restassured.response.ExtractableResponse;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,6 +15,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -49,8 +51,10 @@ class ProductOrderApiTest extends ApiTest {
         Product product = response.body().as(Product.class);
         // 주문 생성
         final OrderRequest orderRequest = new OrderRequest(  product , 7);
-        // 주문요청
-        orderService.createOrder(orderRequest);
+        // 주문요청 API 요청
+        ProductStep.주문생성요청(orderRequest);
     }
+
+
 
 }

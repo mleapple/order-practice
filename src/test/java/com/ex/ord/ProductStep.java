@@ -1,6 +1,7 @@
 package com.ex.ord;
 
 import com.ex.ord.entity.DiscountPolicy;
+import com.ex.ord.service.dto.OrderRequest;
 import com.ex.ord.service.dto.RequestProduct;
 import com.ex.ord.service.dto.UpdateRequest;
 import io.restassured.RestAssured;
@@ -28,7 +29,6 @@ public class ProductStep {
                 .when().post("/products")
                 .then().log().all().extract();
     }
-
     public static ExtractableResponse<Response>  조회등록(Long productId) {
         final ExtractableResponse<Response> response = RestAssured.given().log().all()
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -45,5 +45,12 @@ public class ProductStep {
                 .when().patch("/products")
                 .then().log().all().extract();
         return updateResponse;
+    }
+    public static void 주문생성요청(OrderRequest orderRequest) {
+        final ExtractableResponse<Response> orderResponse = RestAssured.given().log().all()
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .body(orderRequest)
+                .when().post("/order")
+                .then().log().all().extract();
     }
 }
