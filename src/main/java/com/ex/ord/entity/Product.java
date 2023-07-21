@@ -23,7 +23,6 @@ public class Product {
     private String name;
     private long price;
     private DiscountPolicy discountPolicy;
-
     public Long getId() {
         return id;
     }
@@ -65,5 +64,9 @@ public class Product {
                 ", price=" + price +
                 ", discountPolicy=" + discountPolicy +
                 '}';
+    }
+
+    public  Long getDiscountPrice(){ // 할인율
+        return discountPolicy.applyDiscount(price);
     }
 }

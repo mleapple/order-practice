@@ -28,7 +28,7 @@ class ProductCreateBeanTest {
     @Test
     void 상품생성하기_BEAN(){
         // 상품 요청 테스트 러프하게
-        RequestProduct request = new RequestProduct("노트북",1000, DiscountPolicy.DC10); // 저장 DTL
+        RequestProduct request = new RequestProduct("노트북",1000, DiscountPolicy.FIX_10_AMOUNT); // 저장 DTL
         productService.creatProduct(request); // 메모리 저장하기
     }
 

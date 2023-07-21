@@ -1,17 +1,33 @@
 package com.ex.ord.entity;
 
+
+
 /**
  * fileName:DiscountPoliy
  * 작성날짜:2023-07-20
  * desc :
  **/
 public enum DiscountPolicy {
-    NONE(0),DC10(10) ,DC20(20),DC30(30);
-    private int discount ;
-    public int getDiscount() {
-        return discount;
-    }
-    DiscountPolicy(int discount) {
-     this.discount = discount;
-    }
+    NONE {
+        @Override
+        public long applyDiscount(final long price) { //
+            return price;
+        }
+
+    },
+    FIX_10_AMOUNT {
+        @Override
+        public long applyDiscount(final long price) { //
+
+            return (long)(price * 0.9);
+        }
+    },
+    FIX_20_AMOUNT {
+        @Override
+        public long applyDiscount(final long price) { //
+
+            return (long)(price * 0.8);
+        }
+    };
+    public abstract long applyDiscount(final long price);
 }
