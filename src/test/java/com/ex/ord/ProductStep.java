@@ -2,6 +2,7 @@ package com.ex.ord;
 
 import com.ex.ord.entity.DiscountPolicy;
 import com.ex.ord.service.dto.RequestProduct;
+import com.ex.ord.service.dto.UpdateRequest;
 import io.restassured.RestAssured;
 import io.restassured.response.ExtractableResponse;
 import io.restassured.response.Response;
@@ -35,5 +36,14 @@ public class ProductStep {
                 .then().log().all().extract();
 
         return  response ;
+    }
+
+    public static ExtractableResponse<Response> 수정하기(UpdateRequest reuqest) {
+        final ExtractableResponse<Response> updateResponse = RestAssured.given().log().all()
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .body(reuqest)
+                .when().patch("/products")
+                .then().log().all().extract();
+        return updateResponse;
     }
 }

@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
  * 작성날짜:2023-07-20
  * desc :
  **/
-//@Component
+@Component
 public class DatabaseCleanup implements InitializingBean{
     @PersistenceContext
     private EntityManager entityManager;

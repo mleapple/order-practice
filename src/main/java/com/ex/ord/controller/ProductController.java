@@ -4,6 +4,7 @@ import com.ex.ord.entity.Product;
 import com.ex.ord.service.ProductService;
 import com.ex.ord.service.dto.GetProductResponse;
 import com.ex.ord.service.dto.RequestProduct;
+import com.ex.ord.service.dto.UpdateRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,5 +36,12 @@ public class ProductController {
         Product proudct                     = productService.getProudct(productId);
         final GetProductResponse response   = new GetProductResponse(proudct.getId(), proudct.getName(), proudct.getPrice(), proudct.getDiscountPolicy());
         return ResponseEntity.ok(response);
+    }
+
+    @PatchMapping
+    @Transactional
+    public ResponseEntity<Void> updateProduct(@RequestBody final UpdateRequest updateRequest){
+        productService.update(updateRequest); // 메모리 저장하기
+        return ResponseEntity.ok().build();
     }
 }

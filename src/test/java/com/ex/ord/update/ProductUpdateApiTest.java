@@ -2,10 +2,8 @@ package com.ex.ord.update;
 
 import com.ex.ord.ProductStep;
 import com.ex.ord.create.ApiTest;
-import com.ex.ord.entity.DiscountPolicy;
 import com.ex.ord.entity.Product;
 import com.ex.ord.service.ProductService;
-import com.ex.ord.service.dto.RequestProduct;
 import com.ex.ord.service.dto.UpdateRequest;
 import io.restassured.RestAssured;
 import io.restassured.response.ExtractableResponse;
@@ -25,7 +23,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
  **/
 
 
-class ProductUpdateTest extends ApiTest {
+class ProductUpdateApiTest extends ApiTest {
 
     @Autowired
     private ProductService productService; // 상품 등록 서버스
@@ -34,26 +32,28 @@ class ProductUpdateTest extends ApiTest {
     void setUp() {
     }
 
+
     @Test
-    void 상품업데이트_테스트()
+    void 상품업데이트Api_테스트()
     {
         // 등록
         ProductStep.상품등록();
         // 조회
         Long productId =1L;
         ExtractableResponse<Response> response = ProductStep.조회등록(productId);
-
-        // 검증
+        // 조회 검증
         assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
         assertThat(response.jsonPath().getString("name")).isEqualTo("노트북");
-
+        // 조회 상품 리턴
         Product product = response.body().as(Product.class);
-
-        // udpate  테스트
+        // udpate   수정 정보
         final UpdateRequest reuqest = new UpdateRequest(product.getId() , "BMW" ,37100, product.getDiscountPolicy());
-
-        // productService.update(reuqest);
-
+        final ExtractableResponse<Response> updateResponse = ProductStep.수정하기(reuqest);
+        // 수정 검증
+        assertThat(updateResponse.statusCode()).isEqualTo(HttpStatus.OK.value());
+        // 수정 확인
+        response = ProductStep.조회등록(productId);
+        assertThat(response.jsonPath().getString("name")).isEqualTo("BMW");
     }
-
+    
 }

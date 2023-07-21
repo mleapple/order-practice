@@ -1,5 +1,7 @@
 package com.ex.ord.create;
 
+
+import com.ex.ord.DatabaseCleanup;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +15,9 @@ import org.springframework.boot.test.web.server.LocalServerPort;
  **/
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ApiTest {
-   /* @Autowired
+    @Autowired
     private DatabaseCleanup databaseCleanup;
-*/
+
     @LocalServerPort
     private int port;
 
@@ -25,7 +27,7 @@ public class ApiTest {
         RestAssured.port = port;
     }
 
- /*   @BeforeEach
+  @BeforeEach
     void 초기설정하기(){
         if(RestAssured.port == RestAssured.UNDEFINED_PORT){
             RestAssured.port =port;
@@ -37,5 +39,5 @@ public class ApiTest {
         }
         databaseCleanup.execute();
 
-    }*/
+    }
 }
