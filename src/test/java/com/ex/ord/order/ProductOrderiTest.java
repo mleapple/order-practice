@@ -34,7 +34,6 @@ class ProductOrderiTest extends ApiTest {
     @Autowired
     private ProductService productService; // 상품 등록 서버스
 
-
     private ProductPort productPort;
     //@Autowired
 
@@ -60,6 +59,7 @@ class ProductOrderiTest extends ApiTest {
         // 주문 생성
         final OrderRequest orderRequest = new OrderRequest(  product , 7);
 
+        // POJO 로 테스트
         OrderPort orderPort = new OrderPort(){
             @Override
             public void save(Order order) {
