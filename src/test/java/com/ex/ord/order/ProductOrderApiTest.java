@@ -54,7 +54,4 @@ class ProductOrderApiTest extends ApiTest {
         // 주문요청 API 요청
         ProductStep.주문생성요청(orderRequest);
     }
-
-
-
 }
