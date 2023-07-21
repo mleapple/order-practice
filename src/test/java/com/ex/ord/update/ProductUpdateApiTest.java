@@ -31,8 +31,6 @@ class ProductUpdateApiTest extends ApiTest {
     @BeforeEach
     void setUp() {
     }
-
-
     @Test
     void 상품업데이트Api_테스트()
     {
@@ -46,7 +44,7 @@ class ProductUpdateApiTest extends ApiTest {
         assertThat(response.jsonPath().getString("name")).isEqualTo("노트북");
         // 조회 상품 리턴
         Product product = response.body().as(Product.class);
-        // udpate   수정 정보
+        // udpate 수정 정보
         final UpdateRequest reuqest = new UpdateRequest(product.getId() , "BMW" ,37100, product.getDiscountPolicy());
         final ExtractableResponse<Response> updateResponse = ProductStep.수정하기(reuqest);
         // 수정 검증
@@ -55,5 +53,4 @@ class ProductUpdateApiTest extends ApiTest {
         response = ProductStep.조회등록(productId);
         assertThat(response.jsonPath().getString("name")).isEqualTo("BMW");
     }
-    
 }
