@@ -1,12 +1,14 @@
 package com.ex.ord.service.dto;
 
 import com.ex.ord.entity.DiscountPolicy;
+import lombok.Data;
 
 /**
  * fileName:RequestProduct
  * 작성날짜:2023-07-20
  * desc :
  **/
+@Data
 public class RequestProduct {
     private final String name;
     private final long price;
@@ -27,7 +29,7 @@ public class RequestProduct {
         return price;
     }
 
-    public DiscountPolicy getDiscountPoliy() {
+    public DiscountPolicy getDiscountPolicy() {
         return discountPolicy;
     }
 }

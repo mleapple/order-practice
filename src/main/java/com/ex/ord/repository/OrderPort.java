@@ -8,5 +8,5 @@ import com.ex.ord.entity.Order;
  * desc :
  **/
 public interface OrderPort {
-    void save(Order order);
+    Order save(Order order);
 }

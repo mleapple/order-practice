@@ -1,12 +1,15 @@
 package com.ex.ord.service.dto;
 
 import com.ex.ord.entity.DiscountPolicy;
+import lombok.Data;
 
 /**
  * fileName:GetProductResponse
  * 작성날짜:2023-07-20
  * desc :
  **/
+
+@Data
 public class GetProductResponse {
     private final Long id;
     private final String name;

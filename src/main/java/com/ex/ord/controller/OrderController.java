@@ -1,12 +1,10 @@
 package com.ex.ord.controller;
 
+import com.ex.ord.entity.Order;
 import com.ex.ord.entity.Product;
 import com.ex.ord.service.OrderService;
 import com.ex.ord.service.ProductService;
-import com.ex.ord.service.dto.GetProductResponse;
-import com.ex.ord.service.dto.OrderRequest;
-import com.ex.ord.service.dto.RequestProduct;
-import com.ex.ord.service.dto.UpdateRequest;
+import com.ex.ord.service.dto.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,9 +28,12 @@ public class OrderController {
     }
     @PostMapping
     @Transactional
-    public ResponseEntity<Void> createOrder(@RequestBody final OrderRequest orderRequest){
-        orderService.createOrder(orderRequest); // 메모리 저장하기
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public ResponseEntity<GetOrderResponse> createOrder(@RequestBody final OrderRequest orderRequest){
+        Order order = orderService.createOrder(orderRequest); // 메모리 저장하기
+        final GetOrderResponse response   = new GetOrderResponse(order.getId() , order);
+        return ResponseEntity.ok(response);
+
+
     }
 
 

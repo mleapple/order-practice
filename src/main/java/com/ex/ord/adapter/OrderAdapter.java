@@ -20,7 +20,7 @@ public class OrderAdapter implements OrderPort {
     }
 
     @Override
-    public void save(Order order) {
-        orderRepository.save(order);
+    public Order save(Order order) {
+         return  orderRepository.save(order);
     }
 }

@@ -46,8 +46,8 @@ public class ProductStep {
                 .then().log().all().extract();
         return updateResponse;
     }
-    public static void 주문생성요청(OrderRequest orderRequest) {
-        final ExtractableResponse<Response> orderResponse = RestAssured.given().log().all()
+    public static ExtractableResponse<Response> 주문생성요청(OrderRequest orderRequest) {
+        return  RestAssured.given().log().all()
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .body(orderRequest)
                 .when().post("/order")

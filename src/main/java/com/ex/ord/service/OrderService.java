@@ -25,14 +25,15 @@ public class OrderService {
         this.orderPort = orderPort;
     }
 
-    public void createOrder(OrderRequest orderRequest) {
+    public Order createOrder(OrderRequest orderRequest) {
         // 주문 상품 확인 하기
         OptionalLong id = OptionalLong.of(orderRequest.getProduct().getId());
-        if (Optional.of(productPort.getProudct(id.getAsLong())).isPresent()) {
+        if (Optional.of(productPort.getProudct(id.getAsLong())).isPresent()) { // 상품이 조
             // 주문생성
-            final Order order = new Order(orderRequest.getProduct(), orderRequest.getQuantity());
-            orderPort.save(order);
+           final Order order = new Order(orderRequest.getProduct(), orderRequest.getQuantity());
+           return  orderPort.save(order);
         }
+        return null;
 
     }
 }

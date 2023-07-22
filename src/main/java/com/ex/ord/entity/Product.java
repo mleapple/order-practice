@@ -69,4 +69,7 @@ public class Product {
     public  Long getDiscountPrice(){ // 할인율
         return discountPolicy.applyDiscount(price);
     }
+    public void  setDiscountPrice() {
+
+    }
 }

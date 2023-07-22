@@ -2,6 +2,7 @@ package com.ex.ord.service.dto;
 
 import com.ex.ord.entity.DiscountPolicy;
 import com.ex.ord.entity.Product;
+import lombok.Data;
 
 /**
  * fileName:UpdateRequest
@@ -9,6 +10,7 @@ import com.ex.ord.entity.Product;
  * desc :
  **/
 
+@Data
 public class UpdateRequest {
 
     private final Long productId;

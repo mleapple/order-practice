@@ -23,7 +23,7 @@ public class ProductService {
     }
 
     public void creatProduct(RequestProduct request) {
-        final Product product = new Product(request.getName(), request.getPrice(), request.getDiscountPoliy());
+        final Product product = new Product(request.getName(), request.getPrice(), request.getDiscountPolicy());
         productPort.save(product);
     }
 
