@@ -11,12 +11,14 @@ import com.ex.ord.service.ProductService;
 import com.ex.ord.service.dto.GetOrderResponse;
 import com.ex.ord.service.dto.OrderRequest;
 import com.ex.ord.service.dto.PaymentRequest;
+import io.restassured.RestAssured;
 import io.restassured.response.ExtractableResponse;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 
 import java.util.Map;
 
@@ -65,7 +67,16 @@ class OrderPaymentiTest extends ApiTest {
         // 결제
         final PaymentRequest paymentRequest = new PaymentRequest(orderResponse.body().jsonPath().getLong("id") , "1111-2222-3333-7777"); //결제 요청 객체
 
-        paymentService.createPayment(paymentRequest);
+
+        RestAssured.given().log().all()
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .body(paymentRequest)
+                .when()
+                .post("/payments")
+                .then().log().all()
+                .extract();
+
+       // paymentService.createPayment(paymentRequest);
 
        // System.out.println("getOrderResponse = " + orderResponse.body().jsonPath().getMap("product"));
       /*  GetOrderResponse getOrderResponse = orderResponse.body().as(GetOrderResponse.class);
