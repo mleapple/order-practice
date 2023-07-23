@@ -9,7 +9,9 @@ import com.ex.ord.entity.Product;
 import com.ex.ord.repository.ProductDbRepository;
 import com.ex.ord.repository.ProductPort;
 import com.ex.ord.repository.ProductRepository;
+import com.ex.ord.service.OrderService;
 import com.ex.ord.service.ProductService;
+import com.ex.ord.service.dto.OrderRequest;
 import io.restassured.response.ExtractableResponse;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,7 +36,8 @@ class ProductOrderiTest extends ApiTest {
     @Autowired
     private ProductService productService; // 상품 등록 서버스
 
-    private ProductPort productPort;
+    @Autowired
+    private OrderService orderService;
     //@Autowired
 
     @Autowired
@@ -57,82 +60,13 @@ class ProductOrderiTest extends ApiTest {
         // 조회 상품 리턴
         Product product = response.body().as(Product.class);
         // 주문 생성
+        // 주문 생성
         final OrderRequest orderRequest = new OrderRequest(  product , 7);
 
-        // POJO 로 테스트
-        OrderPort orderPort = new OrderPort(){
-            @Override
-            public void save(Order order) {
-                System.out.println(" = 주문저장"  );
-            }
-        };
-
-        ProductPort productPort = new ProductBeanAdapter(productDbRepository);
-        OrderService orderService  = new OrderService(productPort ,orderPort );
         orderService.createOrder(orderRequest);
     }
 
-    private class OrderRequest {
-        private final Product product;
-        private final int quantity ;
-
-        public OrderRequest(Product product, int quantity) {
-            this.product = product;
-            this.quantity = quantity;
-        }
-
-        public Product getProduct() {
-            return product;
-        }
-
-        public int getQuantity() {
-            return quantity;
-        }
-    }
 
 
 
-
-    class OrderService {
-        private final ProductPort productPort;
-        private final OrderPort orderPort;
-
-        public OrderService(ProductPort productPort, OrderPort orderPort) {
-            this.productPort = productPort;
-            this.orderPort = orderPort;
-        }
-
-        public void createOrder(OrderRequest orderRequest) {
-            // 주문 상품 확인 하기
-            OptionalLong id = OptionalLong.of(orderRequest.getProduct().getId());
-            if(Optional.of(productPort.getProudct(id.getAsLong())).isPresent()){
-                // 주문생성
-                final Order order = new Order(orderRequest.getProduct() ,orderRequest.getQuantity());
-                orderPort.save(order);
-            }
-
-        }
-    }
-
-     interface OrderPort {
-        void save(Order order);
-    }
-
-    class OrderAdapter implements OrderPort{
-
-        private final OrderRepository orderRepository;
-
-        public OrderAdapter(OrderRepository orderRepository) {
-            this.orderRepository = orderRepository;
-        }
-
-        @Override
-        public void save(Order order) {
-            orderRepository.save(order);
-
-        }
-    }
-
-    interface OrderRepository extends CrudRepository<Order,Long> {
-    }
 }

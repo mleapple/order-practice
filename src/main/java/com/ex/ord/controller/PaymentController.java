@@ -26,8 +26,6 @@ public class PaymentController {
     @Transactional
     public ResponseEntity<Void> createPayment(@RequestBody PaymentRequest paymentRequest){
         paymentService.createPayment(paymentRequest);
-
         return  ResponseEntity.status(HttpStatus.CREATED).build();
-
     }
 }

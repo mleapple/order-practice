@@ -19,7 +19,7 @@ public class ProductStep {
     public static  void 상품등록(){
         final String name = "노트북";
         final int price = 1000;
-        final DiscountPolicy discountPolicy = DiscountPolicy.NONE;
+        final DiscountPolicy discountPolicy = DiscountPolicy.FIX_20_AMOUNT;
         RequestProduct request = new RequestProduct(name, price, discountPolicy); // 상품을 생성요청 하였고
 
         //Api = 요청 한다
